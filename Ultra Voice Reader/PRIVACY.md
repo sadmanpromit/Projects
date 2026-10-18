@@ -47,7 +47,7 @@ Read this tab processes an accessible PDF, DOCX, TXT or Markdown document alread
 
 ## Contact for privacy and support
 
-Publisher: **Computation Corporation**. For support and privacy requests, use the verified publisher contact listed on the Ultra Voice Reader Chrome Web Store page. This contact is separate from Fairpeers.
+Publisher: **Computation Corporation**. For support and privacy requests, email **ultravoicereader@gmail.com**, the verified Chrome Web Store publisher contact for Computation Corporation. This is separate from Fairpeers.
 
 This policy will be updated if the extension's information practices change.
 
