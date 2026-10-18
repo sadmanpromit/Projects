@@ -33,6 +33,20 @@ When a user reopens an unchanged supported document and chooses **Read this tab*
 
 Ultra Voice Reader requests `storage`, `clipboardRead`, `activeTab`, `scripting`, `offscreen`, `tts` and `notifications` permissions to perform the user-requested reading and media functions described above. Optional website and local-file host access is requested when needed for supported documents. You can review or revoke permissions in Chrome extension settings.
 
+
+
+## Local data retention and controls
+
+Reading passages, progress bookmarks and preferences are saved in Chrome extension-local storage. Saved reading content remains there until the user removes it, clears eligible Reading List entries, or uninstalls the extension. When completion history is enabled, up to five unpinned completed items are retained; pinned items are retained separately until removed. Computation Corporation does not operate a central service that collects this extension's reading passages. Voices available through Chrome may process text according to their separate provider policies.
+
+## Chrome Web Store Limited Use
+
+Computation Corporation's use of information accessed through Chrome and Google APIs complies with the Chrome Web Store User Data Policy, including its Limited Use requirements. Ultra Voice Reader uses user content only for user-requested reading and related functionality; it does not sell that content or use it to target personalized advertising. The publisher does not routinely access users' locally saved reading passages.
+
+## Contact for privacy and support
+
+For support and privacy requests, use the verified publisher contact listed on the Ultra Voice Reader Chrome Web Store page. This contact is separate from Fairpeers.
+
 ## Contact
 
 Publisher: **Computation Corporation**. For support or privacy requests, use the publisher contact information in the Ultra Voice Reader Chrome Web Store listing once it is published.
