@@ -2,7 +2,7 @@
 
 **Publisher:** Computation Corporation  
 **Effective date:** 18 October 2026  
-**Applies to:** Ultra Voice Reader Chrome extension, version 1.8.7 (free release)
+**Applies to:** Ultra Voice Reader Chrome extension, version 1.8.8 (free release)
 
 Ultra Voice Reader reads text aloud at the user's request. It does not require an account, and Computation Corporation does not operate a service to collect or store the passages you read.
 
@@ -23,7 +23,7 @@ Speech is performed through the voices offered by Chrome and your operating syst
 
 The free version may show a clearly identified first-party **Fairpeers** promotion, with a bundled papyrus logo and a link to **https://fairpeers.com/**, only while its Home reading preview is empty. The promotion does not use tracking pixels, make automatic advertising requests or share clipboard text, reading text, reading history, bookmarks or visited webpage URLs. Opening the link is a user-initiated navigation to a separate website, whose availability and privacy practices may differ.
 
-A PlayaYield software module is bundled for a potential future release, but **live third-party ads are disabled in version 1.8.7** and no PlayaYield advertising requests are initiated in this release. If third-party advertising is activated in the future, this policy and the Chrome Web Store disclosures will be reviewed and updated first. Any such network may process technical information as separately disclosed in that later policy.
+A PlayaYield software module is bundled for a potential future release, but **live third-party ads are disabled in version 1.8.8** and no PlayaYield advertising requests are initiated in this release. If third-party advertising is activated in the future, this policy and the Chrome Web Store disclosures will be reviewed and updated first. Any such network may process technical information as separately disclosed in that later policy.
 
 ## Document reopening
 
@@ -41,7 +41,7 @@ Reading passages, progress bookmarks and preferences are saved in Chrome extensi
 
 Computation Corporation's use of information accessed through Chrome and Google APIs complies with the Chrome Web Store User Data Policy, including its Limited Use requirements. Ultra Voice Reader uses user content only for user-requested reading and related functionality; it does not sell that content or use it to target personalized advertising. The publisher does not routinely access users' locally saved reading passages.
 
-## Contact for privacy and support
+## Direct file selection\n\nWhen the user chooses **Read file**, Chrome displays a local file picker. The selected PDF, DOCX, TXT or Markdown document is parsed in the extension, without uploading its contents or automatically monitoring local folders. Extracted text and bookmarks are stored and deleted under the same local-reading controls described above.\n\n## Contact for privacy and support
 
 Publisher: **Computation Corporation**. For support and privacy requests, use the verified publisher contact listed on the Ultra Voice Reader Chrome Web Store page. This contact is separate from Fairpeers.
 
