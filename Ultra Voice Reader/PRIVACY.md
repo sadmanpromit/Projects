@@ -8,9 +8,9 @@ Ultra Voice Reader reads text aloud at the user's request. It does not require a
 
 ## Information processed
 
-- **Selected text:** When you click **Read selected**, the extension accesses the selected text on the current accessible webpage.
+- **Selected text:** When you click **Read selected** or use an assigned selection keyboard shortcut, the extension accesses the selected text on the current accessible webpage.
 - **Webpage text:** When you click **Read this tab**, the extension extracts available text from that tab. Some supported documents (including accessible text-based PDF, DOCX and text URLs) may need a document request with the appropriate Chrome permissions. Protected viewers and scanned PDFs may not be supported.
-- **Clipboard text:** The extension reads your clipboard when you click **Read clipboard**; it does not continuously monitor your clipboard.
+- **Clipboard text:** The extension reads your clipboard when you click **Read clipboard** or use an assigned clipboard keyboard shortcut; it does not continuously monitor your clipboard.
 - **Reading List and preferences:** Extracted or copied passages, bookmarks and reading progress, pinned entries, limited reading history and user settings are stored in Chrome's extension-local storage on your device. You can remove readings inside the extension, and Chrome normally removes the extension's local storage on uninstall.
 - **Highlighting:** Word and passage highlights use local page text ranges and browser highlighting mechanisms. The extension does not transmit these highlights to a publisher-operated server.
 - **Playback and media controls:** Chrome text-to-speech voices and a bundled silent media asset support reading and compatible media controls. The extension does not record your microphone or audio output.
