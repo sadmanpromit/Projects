@@ -2,7 +2,7 @@
 
 **Publisher:** Computation Corporation  
 **Effective date:** 18 October 2026  
-**Applies to:** Ultra Voice Reader Chrome extension, version 1.8.16 (free release)
+**Applies to:** Ultra Voice Reader Chrome extension, version 1.8.18 (free release)
 
 Ultra Voice Reader reads text aloud at the user's request. It does not require an account, and Computation Corporation does not operate a service to collect or store the passages you read.
 
