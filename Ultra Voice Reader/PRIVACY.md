@@ -1,8 +1,8 @@
 # Ultra Voice Reader — Privacy Policy
 
 **Publisher:** Computation Corporation  
-**Effective date:** 18 October 2026  
-**Applies to:** Ultra Voice Reader Chrome extension, version 1.8.18 (free release)
+**Last updated:** 20 October 2026  
+**Applies to:** Ultra Voice Reader Chrome extension, published v1.8.18 and planned v1.8.19 advertising update; differences are identified below.
 
 Ultra Voice Reader reads text aloud at the user's request. It does not require an account, and Computation Corporation does not operate a service to collect or store the passages you read.
 
@@ -21,9 +21,11 @@ Speech is performed through the voices offered by Chrome and your operating syst
 
 ## Fairpeers promotion and advertising
 
-The free version may show a clearly identified first-party **Fairpeers** promotion, with a bundled papyrus logo and a link to **https://fairpeers.com/**, only while its Home reading preview is empty. The promotion does not use tracking pixels, make automatic advertising requests or share clipboard text, reading text, reading history, bookmarks or visited webpage URLs. Opening the link is a user-initiated navigation to a separate website, whose availability and privacy practices may differ.
+**Published v1.8.18:** A clearly identified first-party **Fairpeers** promotion may appear only while the Home reading preview is empty. The extension includes a dormant PlayaYield SDK, but v1.8.18 does **not** make PlayaYield production advertising requests. Fairpeers does not receive your copied text, passages, source URLs, bookmarks or reading history from this promotion. Following the Fairpeers link opens an external site only when clicked.
 
-A PlayaYield software module is bundled for a potential future release, but **live third-party ads are disabled in version 1.8.16** and no PlayaYield advertising requests are initiated in this release. If third-party advertising is activated in the future, this policy and the Chrome Web Store disclosures will be reviewed and updated first. Any such network may process technical information as separately disclosed in that later policy.
+**Planned v1.8.19 (not published as of this update):** Once Chrome Web Store approves and publishes the next version, the empty Home preview may instead display one sponsored advertisement served through **PlayaYield (PlayaNext LLC)**. The ad is not inserted into websites or shown while a reading is active. The bundled SDK requests and measures ads through its network service; advertising requests include the extension ID, the ad placement and requested dimensions. Network requests inherently disclose IP address and may expose limited technical device/browser information to the provider. The provider receives ad delivery and measurement events (such as available advertisements, impressions, ad clicks and associated event identifiers, and possibly referrer metadata on a click); advertiser destinations may collect information under their own policies. We do **not** provide PlayaYield with extracted webpage text, clipboard text, reading contents, Reading List/bookmark data, or browsing history as advertising parameters. We do not sell or use these reading data for personalized ad targeting.
+
+PlayaYield's privacy information: https://www.playayield.com/privacy. Ads use the existing popup preview only when idle, without external content-script ad injection. Ad service requests occur only in the version where live advertising is enabled; the published v1.8.18 release remains house-promotion-only. We will review consent obligations and Chrome Web Store privacy declarations before submitting v1.8.19 for review. Users can avoid receiving any ad requests from the extension by not opening the popup, or by uninstalling the extension.
 
 ## Document reopening
 
