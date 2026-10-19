@@ -2,7 +2,7 @@
 
 **Publisher:** Computation Corporation  
 **Effective date:** 18 October 2026  
-**Applies to:** Ultra Voice Reader Chrome extension, version 1.8.15 (free release)
+**Applies to:** Ultra Voice Reader Chrome extension, version 1.8.16 (free release)
 
 Ultra Voice Reader reads text aloud at the user's request. It does not require an account, and Computation Corporation does not operate a service to collect or store the passages you read.
 
@@ -23,7 +23,7 @@ Speech is performed through the voices offered by Chrome and your operating syst
 
 The free version may show a clearly identified first-party **Fairpeers** promotion, with a bundled papyrus logo and a link to **https://fairpeers.com/**, only while its Home reading preview is empty. The promotion does not use tracking pixels, make automatic advertising requests or share clipboard text, reading text, reading history, bookmarks or visited webpage URLs. Opening the link is a user-initiated navigation to a separate website, whose availability and privacy practices may differ.
 
-A PlayaYield software module is bundled for a potential future release, but **live third-party ads are disabled in version 1.8.15** and no PlayaYield advertising requests are initiated in this release. If third-party advertising is activated in the future, this policy and the Chrome Web Store disclosures will be reviewed and updated first. Any such network may process technical information as separately disclosed in that later policy.
+A PlayaYield software module is bundled for a potential future release, but **live third-party ads are disabled in version 1.8.16** and no PlayaYield advertising requests are initiated in this release. If third-party advertising is activated in the future, this policy and the Chrome Web Store disclosures will be reviewed and updated first. Any such network may process technical information as separately disclosed in that later policy.
 
 ## Document reopening
 
