@@ -13,7 +13,7 @@ Ultra Voice Reader reads text aloud at the user's request. It does not require a
 - **Clipboard text:** The extension reads your clipboard when you click **Read clipboard** or use an assigned clipboard keyboard shortcut; it does not continuously monitor your clipboard.
 - **Reading List and preferences:** Extracted or copied passages, bookmarks and reading progress, pinned entries, limited reading history and user settings are stored in Chrome's extension-local storage on your device. You can remove readings inside the extension, and Chrome normally removes the extension's local storage on uninstall.
 - **Highlighting:** Word and passage highlights use local page text ranges and browser highlighting mechanisms. The extension does not transmit these highlights to a publisher-operated server.
-- **Playback and media controls:** Chrome text-to-speech voices and a bundled silent media asset support reading and compatible media controls. The extension does not record your microphone or audio output.
+- **Playback and media controls:** Reading uses Chrome text-to-speech voices. Compatible media-key Play/Pause controls are best effort and depend on Chrome and the device; this version does not use a synthetic silent-audio player. The extension does not record your microphone or audio output.
 
 ## Speech voice providers
 
@@ -33,7 +33,7 @@ When a user reopens an unchanged supported document and chooses **Read this tab*
 
 ## Permissions
 
-Ultra Voice Reader requests `storage`, `clipboardRead`, `activeTab`, `scripting`, `offscreen`, `tts` and `notifications` permissions to perform the user-requested reading and media functions described above. Optional website and local-file host access is requested when needed for supported documents. You can review or revoke permissions in Chrome extension settings.
+Ultra Voice Reader requests `storage` (save locally stored readings, bookmarks, settings and history), `clipboardRead` (read clipboard on user request), `activeTab` and `scripting` (extract and highlight readable page text after an explicit action), `offscreen` (temporary document for user-invoked clipboard shortcuts, not background audio playback), `tts` (speech synthesis), and `notifications` (explain how to enable file access if needed). Optional website and local-file host access is requested for supported documents only when needed. You can review or revoke permissions in Chrome extension settings.
 
 ## Local data retention and controls
 
