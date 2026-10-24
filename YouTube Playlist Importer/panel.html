@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YouTube Playlist Importer</title><link rel="stylesheet" href="panel.css"></head>
+<body>
+<header class="top">
+  <img src="icons/icon48.png" class="app-icon" width="36" height="36" alt="">
+  <div class="brand"><h1>YouTube Playlist Importer</h1><p>Verified playlist queue</p></div>
+</header>
+<nav id="tabNav" class="tabs" role="tablist" aria-label="Importer sections">
+  <button id="tab-home" class="tab" type="button" role="tab" aria-controls="view-home" aria-selected="true" tabindex="0" data-tab="home">Home</button>
+  <button id="tab-options" class="tab" type="button" role="tab" aria-controls="view-options" aria-selected="false" tabindex="-1" data-tab="options">Options</button>
+  <button id="tab-activity" class="tab" type="button" role="tab" aria-controls="view-activity" aria-selected="false" tabindex="-1" data-tab="activity">Activity</button>
+  <button id="tab-about" class="tab" type="button" role="tab" aria-controls="view-about" aria-selected="false" tabindex="-1" data-tab="about">About</button>
+</nav>
+<main>
+  <section id="view-home" class="tabview" role="tabpanel" aria-labelledby="tab-home">
+    <section class="card home-progress">
+      <div class="card-head"><span class="eyebrow">QUEUE PROGRESS</span><strong id="progressPct">0%</strong></div>
+      <div class="progress" role="progressbar" aria-label="Queue progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressBar"></div></div>
+      <div class="stats"><div><span id="addedCount">0</span><small>Confirmed</small></div><div><span id="pendingCount">0</span><small>Pending</small></div><div><span id="totalCount">0</span><small>Total</small></div></div>
+    </section>
+    <section class="card current"><div class="eyebrow">CURRENT VIDEO</div><div id="currentTitle" class="truncate">Waiting for a workbook</div></section>
+    <section class="controls"><button id="start" class="button primary" type="button" disabled>Start queue</button><button id="stop" class="button secondary" type="button" disabled>Pause</button><button id="retry" class="button secondary" type="button" disabled>Retry current</button></section>
+    <p class="subtle-hint">Configure your workbook and playlist settings under <button id="goOptions" type="button" class="text-link">Options</button>.</p>
+  </section>
+  <section id="view-options" class="tabview" role="tabpanel" aria-labelledby="tab-options" hidden>
+    <section class="card"><div class="eyebrow">SOURCE WORKBOOK</div>
+      <div id="fileName" class="filename">Checking saved workbook…</div>
+      <button id="chooseFile" class="button secondary choose" type="button">Choose or change XLSM / XLSX</button>
+    </section>
+    <section class="card"><div class="eyebrow">TARGET PLAYLIST</div>
+      <label class="line playlist-label" for="playlistName">YouTube playlist name (exact match)</label>
+      <div class="playlist-editor"><input id="playlistName" type="text" maxlength="150" autocomplete="off" spellcheck="false" placeholder="Exact playlist name" aria-describedby="playlistNote playlistFeedback"><button id="savePlaylist" class="button secondary" type="button">Save name</button></div>
+      <p id="playlistNote" class="fine">Enter the name of a playlist you can edit on your signed-in YouTube account. Names are case-insensitive, but must otherwise match.</p>
+      <p id="playlistFeedback" class="setting-feedback" role="status" aria-live="polite"></p>
+    </section>
+    <section class="card"><div class="eyebrow">IMPORT DELAY</div><label class="line" for="delay">Delay between videos <span id="delayLabel">3 s</span></label>
+      <input id="delay" type="range" min="2" max="20" value="3" step="1"></section>
+  </section>
+  <section id="view-activity" class="tabview" role="tabpanel" aria-labelledby="tab-activity" hidden>
+    <section class="card"><div class="card-head"><span class="eyebrow">ACTIVITY LOG</span><div class="log-actions"><button id="exportLog" class="text-link" type="button">Export log</button><button id="clearLog" class="text-link danger-link" type="button">Clear log</button></div></div>
+      <div id="log" class="log" aria-live="polite">No actions yet.</div>
+    </section>
+  </section>
+  <section id="view-about" class="tabview" role="tabpanel" aria-labelledby="tab-about" hidden>
+    <section class="card"><div class="eyebrow">ABOUT</div><h2>YouTube Playlist Importer</h2>
+      <p>Import direct YouTube video links from a local Excel workbook into a playlist you choose, using your signed-in browser session. This is an independent, locally installed utility.</p>
+      <p class="version">Version 1.4.1 · Private-use edition</p>
+    </section>
+    <section class="card"><div class="eyebrow">HOW IT WORKS</div>
+      <ol class="steps">
+        <li>Open <strong>Options</strong>, choose an <code>.xlsx</code> or <code>.xlsm</code> workbook containing direct YouTube watch URLs, and set your exact <strong>Target playlist</strong> name.</li>
+        <li>Press <strong>Start queue</strong> on Home. It requests workbook permission when needed and processes videos one at a time in a muted background tab.</li>
+        <li>The importer locates <strong>Save to…</strong> and the playlist name you configured, and checks membership without toggling off an already saved video.</li>
+        <li>Only after YouTube confirms does it remove the confirmed Excel row, shift subsequent rows and hyperlinks up, then verify the workbook write.</li>
+        <li>The queue waits for your configured delay before continuing. An interrupted transaction is journaled for recovery.</li>
+      </ol>
+    </section>
+    <section class="card"><div class="eyebrow">REQUIRED EXCEL FORMAT</div>
+      <p>Use an <code>.xlsx</code> or <code>.xlsm</code> workbook. The simplest sheet has a header in row 1 and one song per row starting at row 2. The URL must point directly to a YouTube video, either as a normal cell value or an Excel hyperlink on the song title.</p>
+      <div class="example-table-wrap"><table class="example-table"><thead><tr><th>A: Song</th><th>B: YouTube video URL</th></tr></thead><tbody><tr><td>Example song 1</td><td>https://www.youtube.com/watch?v=dQw4w9WgXcQ</td></tr><tr><td>Example song 2</td><td>https://youtu.be/9bZkp7q19f0</td></tr></tbody></table></div>
+      <p>You can instead put a clickable YouTube hyperlink directly in column A (with the song title as the display text) and omit column B. The sheet name and workbook filename can be anything; the importer finds the sheet with the most valid video links. Direct <code>youtube.com/watch?v=…</code> and <code>youtu.be/…</code> URLs work. Playlist, search and Shorts page URLs are not supported.</p>
+      <p>After confirming membership on YouTube, the extension <strong>deletes the entire processed worksheet row</strong> and moves later rows up. <strong>Make a backup first</strong> and don't open/edit the workbook simultaneously in Excel.</p>
+    </section>
+    <section class="card"><div class="eyebrow">RETRIES &amp; NOTIFICATIONS</div>
+      <p>Up to <strong>3 automatic retries</strong> for YouTube failures. If they all fail, the queue pauses, sounds an alert when audio is permitted, and sends a desktop notification. Click the notification to bring the extension back into view on the Home tab.</p>
+    </section>
+    <section class="card"><div class="eyebrow">WINDOWS &amp; BACKGROUND USE</div>
+      <p><strong>Keep the Chrome window containing the importer side panel maximized and open</strong> while the queue is running. Do <strong>not</strong> maximize another browser or application window over it, or fully cover the importer window.</p>
+      <p>You may keep using the device with other <strong>windowed (non-maximized) applications and browser windows/tabs</strong>, provided they do not fully cover or interrupt the importer window. Keep the side panel open. You can also use other tabs when the importer remains available.</p>
+      <p>This layout is recommended for reliability, <strong>not a guarantee</strong>. Chrome may still throttle background tabs, and YouTube can delay or change its controls. If the queue pauses, return to Home or Activity and check the error before retrying.</p>
+    </section>
+    <section class="card"><div class="eyebrow">FILE ACCESS &amp; SAFETY</div>
+      <p>The saved workbook reconnects automatically when Chrome permits. When access expires, selecting the file again or pressing <strong>Start queue</strong> can request renewed permission; the current queue is preserved.</p>
+      <p>File paths cannot override Chrome's security prompts. The Excel workbook is updated only after verification. Keep a separate backup before importing, and do not open or edit the workbook in another program while the queue is running.</p>
+      <p>The extension works in your existing YouTube session without uploading workbook contents to a third-party server or using the YouTube Data API. It is independent of YouTube and Google, and is not endorsed by either.</p>
+    </section>
+    <footer>Independent utility · Not affiliated with YouTube or Google</footer>
+  </section>
+  <span id="statusChip" class="sr-only" role="status" aria-live="polite">Idle</span><span id="lastUpdated" hidden></span>
+</main>
+<script src="zip-workbook.js"></script><script src="panel.js"></script>
+</body></html>
