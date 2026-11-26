@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Tic Tac Toe by Sadman Sakib Khan Promit">
+    <meta name="keywords" content="Tic Tac Toe, online game, play Tic Tac Toe, advanced mode, normal mode, AI, computer Tic Tac Toe, browser game, Sadman Sakib Khan Promit, Sadman Promit, promit">
+    <meta property="og:title" content="Tic Tac Toe" />
+    <meta property="og:description" content="Tic Tac Toe by Sadman Sakib Khan Promit" />
+    <meta property="og:url" content="https://www.spromits.com/" />
+    <meta name="twitter:title" content="Tic Tac Toe">
+    <meta name="twitter:description" content="Tic Tac Toe by Sadman Sakib Khan Promit">
+    <link rel="icon" type="image/x-icon" href="spromits.ico">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input {
+            margin-top: 40px;
+        }
+        #gameStatus {
+            margin-top: 10px;
+            font-size: 1.2em;
+            text-align: center;
+            color: #333;
+        }
+        footer {
+            background-color: #121315;
+            color: #a7a7a7;
+            font-size: 16px;
+            text-align: center;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrap">
+        <h1>Tic Tac Toe</h1>
+        <div class="container">
+            <canvas class="board" id="board" width="300" height="300"></canvas>
+            <div class="input">
+                <select id="inputMethod" onchange="switchInputMethod()">
+                    <option value="2">Mode: Advanced</option>
+                    <option value="1">Mode: Normal</option>
+                </select>
+            </div>
+            <p id="gameStatus"></p>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Sadman Sakib Khan Promit
+		<a href="https://github.com/SadmanPromit" target="_blank">GitHub</a>
+		<a href="https://www.linkedin.com/in/sadmanpromit/" target="_blank">LinkedIn</a>
+    </footer>
+    <script>
+        class User {
+            constructor() {
+                this.board = Array(9).fill(0); // null:0
+                this.mode = 2; // Advanced:2 & Normal:1
+                this.player = -1; // X:-1 & O:1
+                this.turn = 0;
+            }
+        }
+        const user = new User();
+        function switchInputMethod() {
+            const inputMethod = document.getElementById('inputMethod').value;
+            user.mode = parseInt(inputMethod);
+        }
+        function maxNum(a, b) {
+            return (a > b) ? a : b;
+        }
+        function minNum(a, b) {
+            return (a < b) ? a : b;
+        }
+        function gridChar(board, player) {
+            if (player == -1) { // for X
+                switch (board) {
+                    case -1:
+                        return 'X';
+                    case 0:
+                        return ' ';
+                    case 1:
+                        return 'O';
+                    default:
+                        return ' ';
+                }
+            } else if (player == 1) { // for O
+                switch (board) {
+                    case -1:
+                        return 'O';
+                    case 0:
+                        return ' ';
+                    case 1:
+                        return 'X';
+                    default:
+                        return ' ';
+                }
+            }
+        }
+        function draw() {
+            var c = document.getElementById("board");
+            var ctx = c.getContext("2d");
+            ctx.clearRect(0, 0, c.width, c.height); // Clear the canvas
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(100, 0);
+            ctx.lineTo(100, 300);
+            ctx.moveTo(200, 0);
+            ctx.lineTo(200, 300);
+            ctx.moveTo(0, 100);
+            ctx.lineTo(300, 100);
+            ctx.moveTo(0, 200);
+            ctx.lineTo(300, 200);
+            ctx.stroke();
+            for (let i = 0; i < 9; i++) {
+                const row = Math.floor(i / 3);
+                const col = i % 3;
+                const x = col * 100 + 50;
+                const y = row * 100 + 50;
+                ctx.font = '48px Arial';
+                let ch = gridChar(user.board[i], user.player);
+                if (ch === 'X')
+                    ctx.fillStyle = 'red';
+                else if (ch === 'O')
+                    ctx.fillStyle = 'blue';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(ch, x, y);
+            }
+        }
+        function win(board) {
+            const wins = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]
+            ];
+            for (let i = 0; i < 8; ++i) {
+                if (board[wins[i][0]] !== 0 &&
+                    board[wins[i][0]] === board[wins[i][1]] &&
+                    board[wins[i][0]] === board[wins[i][2]]) {
+                    return board[wins[i][2]];
+                }
+            }
+            return 0;
+        }
+        function minimax(board, player) {
+            const winner = win(board);
+            if (winner !== 0) return winner * player;
+            let move = -1;
+            let score = -2;
+            for (let i = 0; i < 9; ++i) {
+                if (board[i] === 0) {
+                    board[i] = player;
+                    const thisScore = -minimax(board, player * -1);
+                    if (thisScore > score) {
+                        score = thisScore;
+                        move = i;
+                    }
+                    board[i] = 0;
+                }
+            }
+            if (move === -1) return 0;
+            return score;
+        }
+        function minimaxPruned(board, player, alpha, beta) {
+            const winner = win(board);
+            if (winner !== 0) return winner * player;
+            let score = (player === 1) ? -2 : 2;
+            for (let i = 0; i < 9; ++i) {
+                if (board[i] === 0) {
+                    board[i] = player;
+                    if (player === 1) {
+                        score = maxNum(score, -minimaxPruned(board, -1, alpha, beta));
+                        alpha = maxNum(alpha, score);
+                    } else {
+                        score = minNum(score, -minimaxPruned(board, 1, alpha, beta));
+                        beta = minNum(beta, score);
+                    }
+                    board[i] = 0;
+                    if (alpha >= beta)
+                        break;
+                }
+            }
+            if (score === -2 || score === 2)
+                return 0;
+            return score;
+        }
+        function computerMove(board, mode) {
+            let move = -1;
+            let score = -2;
+            let alpha = -2;
+            let beta = 2;
+            for (let i = 0; i < 9; ++i) {
+                if (board[i] === 0) {
+                    board[i] = 1;
+                    let tempScore = -1000;
+                    if (mode === 2)
+                        tempScore = -minimax(board, -1);
+                    else if (mode === 1)
+                        tempScore = -minimaxPruned(board, -1, alpha, beta);
+                    board[i] = 0;
+                    if (tempScore > score) {
+                        score = tempScore;
+                        move = i;
+                    }
+                }
+            }
+            if (move !== -1) {
+                board[move] = 1;
+                ++user.turn;
+            }
+        }
+        function playerMove(board, event) {
+            const rect = event.target.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const col = Math.floor(x / 100);
+            const row = Math.floor(y / 100);
+            let move = row * 3 + col;
+            if (move < 0 || move >= 9 || board[move] !== 0)
+                return;
+            board[move] = -1;
+            ++user.turn;
+            draw();
+            if (win(user.board) === 0) {
+                computerMove(user.board, user.mode);
+                draw();
+            }
+            updateGameStatus();
+        }
+        function updateGameStatus() {
+            const winner = win(user.board);
+            const gameStatus = document.getElementById('gameStatus');
+            if (winner === 1)
+                gameStatus.textContent = 'You lose!';
+            else if (winner === -1)
+                gameStatus.textContent = 'You win!';
+            else if (!user.board.includes(0))
+                gameStatus.textContent = "It's a draw!";
+            else {
+				const playerChar = user.player === -1 ? '<span style="color: red;">X</span>' : '<span style="color: blue;">O</span>';
+				gameStatus.innerHTML = `You are ${playerChar}`;
+            }
+        }
+        function resetGame() {
+            user.board = Array(9).fill(0);
+            user.player *= -1;
+            user.turn = 0;
+            const gameStatus = document.getElementById('gameStatus');
+			const playerChar = user.player === -1 ? '<span style="color: red;">X</span>' : '<span style="color: blue;">O</span>';
+			gameStatus.innerHTML = `You are ${playerChar}`;
+            main();
+        }
+        function main() {
+            const canvas = document.getElementById("board");
+            const gameStatus = document.getElementById('gameStatus');
+			const playerChar = user.player === -1 ? '<span style="color: red;">X</span>' : '<span style="color: blue;">O</span>';
+			gameStatus.innerHTML = `You are ${playerChar}`;
+            canvas.removeEventListener("click", playerMoveHandler);
+            canvas.addEventListener("click", playerMoveHandler);
+            if (user.turn === 0 && user.player === 1)
+                computerMove(user.board, user.mode);
+            draw();
+        }
+        function playerMoveHandler(event) {
+            if (win(user.board) === 0 && user.board.includes(0))
+                playerMove(user.board, event);
+			else
+                resetGame();
+        }
+        main();
+    </script>
+</body>
+</html>
