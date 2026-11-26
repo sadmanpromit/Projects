@@ -1,0 +1,3 @@
+config.yaml:
+dataset_path: 'C:/Users/promi/Documents/Datasets/Real_Life_Violence_Dataset'
+class_names: ['NonViolence', 'Violence']

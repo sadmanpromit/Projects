@@ -1,0 +1,32 @@
+# Never publish source workbooks or exported operational data.
+*.xlsx
+*.xlsm
+*.xls
+*.xlsb
+*.csv
+*.tsv
+*.log
+*.bak
+*.tmp
+*.temp
+*.zip
+
+# Authentication, browser profile and environment files.
+.env
+.env.*
+!.env.example
+*credentials*
+*secrets*
+*token*
+User Data/
+chrome-profile/
+Profile */
+Default/
+
+# Local dependencies and system/editor artifacts.
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+__pycache__/
