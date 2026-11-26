@@ -1,0 +1,11 @@
+hate.py:
+positive_data_path = Path('C:/Users/promi/Documents/Datasets/Wikipedia_Talk_Corpus/comments_article_2010/comments_article_2010/chunk_0.tsv')
+negative_data_path = Path('C:/Users/promi/Documents/Datasets/hateful-and-controversial-reddit-comments/MensRights_comment_1577836800_1609459200/data.csv')
+
+hate_test.py:
+positive_data_path = Path('C:/Users/promi/Documents/Datasets/hateful-and-controversial-reddit-comments/TheRedPill_comment_1577836800_1609459200/data.csv')
+negative_data_path = Path('C:/Users/promi/Documents/Datasets/Wikipedia_Talk_Corpus/comments_article_2011/comments_article_2011/chunk_0.tsv')
+
+logit.py:
+positive_data_path = Path('./chunk_0.tsv')
+negative_data_path = Path('./data.csv')
